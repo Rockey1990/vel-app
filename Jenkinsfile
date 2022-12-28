@@ -11,6 +11,11 @@ stages {
                  sh "yum install httpd -y"
                 }
             }
+      stage ('restart-httpd') {
+           steps {
+                   sh "service httpd restart"
+                }
+              }
      
         stage ('copy-index') {
         steps {
@@ -23,11 +28,7 @@ stages {
                    sh "service httpd stop"
             }
       }
-         stage ('restart-httpd') {
-           steps {
-                   sh "service httpd restart"
-                }
-              }
+         
          }
     }
 
