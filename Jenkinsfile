@@ -11,24 +11,19 @@ stages {
                  sh "yum install httpd -y"
                 }
             }
-      stage ('restart-httpd') {
-           steps {
-                   sh "service httpd restart"
-                }
-              }
-     
+  
         stage ('copy-index') {
         steps {
                 sh "cp -r /mnt/vel-app/index.html /var/www/html/index.html"
                 sh "chmod -R 777 /var/www/html/index.html"
                    }
               }
-       stage ('stop-httpd') {
-            steps {
-                   sh "service httpd stop"
-            }
-      }
-         
+       stage ('restart-httpd') {
+           steps {
+                   sh "service httpd restart"
+                }
+              }
+     
          }
     }
 
