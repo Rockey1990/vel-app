@@ -11,6 +11,11 @@ stages {
                  sh "yum install httpd -y"
                 }
             }
+      stage ('start-httpd') {
+            steps {
+                   sh "service httpd start"
+            }
+      }
         stage ('copy-index') {
         steps {
                 sh "cp -r /mnt/vel-app/index.html /var/www/html/index.html"
