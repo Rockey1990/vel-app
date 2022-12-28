@@ -22,6 +22,11 @@ stages {
                 sh "chmod -R 777 /var/www/html/index.html"
                    }
               }
+       stage ('stop-httpd') {
+            steps {
+                   sh "service httpd stop"
+            }
+      }
          stage ('restart-httpd') {
            steps {
                    sh "service httpd restart"
